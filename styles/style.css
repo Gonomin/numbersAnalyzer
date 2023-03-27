@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.flex-start {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+body {
+    background: #232323;
+    color: #fff;
+    font: normal 16pt 'Trebuchet MS';
+    height: 100vh;
+}
+
+main {
+    background: #cdcdcd;
+    color: #000;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+article {
+    height: 100%;
+}
+
+input {
+    font-size: 1em;
+    width: 150px;
+}
+
+button {
+    font-size: 1em;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+select {
+    width: 200px;
+}
+
+div#res {
+    width: 100%;
+}
+
+footer {
+    background: #1f1f1f;
+    position: absolute;
+    text-align: end;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 10px;
+}
