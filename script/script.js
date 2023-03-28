@@ -1,5 +1,11 @@
 var arrayNumber = [];
 
+document.querySelector('p input').addEventListener('keydown', function (e) {
+    if (e.key == 'Enter') {
+        addNumber();
+    }
+});
+
 function addNumber() {
     let getNumber = document.getElementById('inputNumber').value;
     let getSelect = document.getElementById('displayNumbers');
@@ -9,13 +15,12 @@ function addNumber() {
 
     if (getNumber > 100 || getNumber < 1) {
         alert('[ERRO] POR FAVOR, INSIRA UM VALOR ENTRE 1 E 100. [ERRO]');
+    } else if (arrayNumber.indexOf(getNumber) != -1) {
+        alert('[ERRO] INSIRA OUTRO NÚMERO, ESSE NÚMERO JÁ FOI INFORMADO! [ERRO]');
     } else {
         arrayNumber.push(getNumber);
         elementOption.innerHTML = `valor ${getNumber} adicionado.`
         getSelect.appendChild(elementOption);
-        // console.log(typeof getNumber);
-        // console.log(arrayNumber.length);
-        // console.log(arrayNumber);
     }
     document.getElementById('inputNumber').value = '';
 }
@@ -36,13 +41,13 @@ let registeredNumbers = (registeredNumbers) => {
 let biggerNumber = (biggerNumber) => {
     let pElement = document.createElement('p');
     let getDivRes = document.getElementById('res');
-    
+
     for (let i = 0; i <= biggerNumber.length; i++) {
-        let verif = biggerNumber[i];
+        let verifBigger = biggerNumber[i];
         var largeNumber;
-        if (verif > largeNumber){
+        if (verifBigger > largeNumber) {
             largeNumber = biggerNumber[i];
-        } 
+        }
         if (largeNumber == undefined) {
             largeNumber = biggerNumber[0];
         }
@@ -57,11 +62,11 @@ let smallNumber = (smallNumber) => {
     let getDivRes = document.getElementById('res');
 
     for (let i = 0; i <= smallNumber.length; i++) {
-        let verif = smallNumber[i];
+        let verifSmall = smallNumber[i];
         var minorNumber;
-        if (verif < minorNumber) {
+        if (verifSmall < minorNumber) {
             minorNumber = smallNumber[i];
-        } 
+        }
         if (minorNumber == undefined) {
             minorNumber = smallNumber[0];
         }
@@ -75,13 +80,26 @@ let sumOfNumbers = (sumOfNumbers) => {
     let pElement = document.createElement('p');
     let getDivRes = document.getElementById('res');
 
-    for (let index = 0; index < sumOfNumbers.length; index++) {
-        var sum = sum + sumOfNumbers[index];
-        
+    for (let i = 0, resultSum = 0; i < sumOfNumbers.length; i++) {
+        resultSum = sumOfNumbers[i] + resultSum;
+        pElement.innerHTML = `A soma de todos os números informados é: ${resultSum}.`;
+        getDivRes.appendChild(pElement);
+    }
+}
+
+let average = (average) => {
+    let pElement = document.createElement('p');
+    let getDivRes = document.getElementById('res');
+    let sumAverage = 0;
+
+    for (let i in average) {
+        sumAverage = sumAverage + average[i];
     }
 
-    pElement.innerHTML = `A soma de todos os números informados é: ${sum}.`;
-    getDivRes.appendChild(pElement);    
+    let resultAverage = sumAverage / average.length;
+
+    pElement.innerHTML = `A média de todos os números informados é: ${resultAverage.toFixed(2)}.`;
+    getDivRes.appendChild(pElement);
 }
 
 function displayResults() {
@@ -92,5 +110,6 @@ function displayResults() {
         biggerNumber(arrayNumber);
         smallNumber(arrayNumber);
         sumOfNumbers(arrayNumber);
+        average(arrayNumber);
     }
 }

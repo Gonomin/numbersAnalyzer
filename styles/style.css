@@ -20,7 +20,7 @@ body {
     background: #232323;
     color: #fff;
     font: normal 16pt 'Trebuchet MS';
-    height: 100vh;
+    height: 93vh;
 }
 
 main {
@@ -60,7 +60,7 @@ div#res {
 
 footer {
     background: #1f1f1f;
-    position: absolute;
+    position: fixed;
     text-align: end;
     bottom: 0;
     right: 0;
