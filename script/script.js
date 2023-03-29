@@ -1,3 +1,4 @@
+let getDivRes = document.getElementById('res');
 var arrayNumber = [];
 
 document.querySelector('p input').addEventListener('keydown', function (e) {
@@ -21,26 +22,22 @@ function addNumber() {
         arrayNumber.push(getNumber);
         elementOption.innerHTML = `valor ${getNumber} adicionado.`
         getSelect.appendChild(elementOption);
+        getDivRes.innerHTML = ''
     }
     document.getElementById('inputNumber').value = '';
+    document.getElementById('inputNumber').focus();
 }
 
-let registeredNumbers = (registeredNumbers) => {
-    let getDivRes = document.getElementById('res');
+let registeredNumbers = (registeredNumbers) => {    
     let pElement = document.createElement('p');
 
     pElement.innerHTML = `Temos, ao todo, um total de ${registeredNumbers.length} números cadastrados.`;
-
-    while (getDivRes.childElementCount != 0) {
-        getDivRes.removeChild(getDivRes.firstChild);
-    }
 
     getDivRes.appendChild(pElement);
 }
 
 let biggerNumber = (biggerNumber) => {
     let pElement = document.createElement('p');
-    let getDivRes = document.getElementById('res');
 
     for (let i = 0; i <= biggerNumber.length; i++) {
         let verifBigger = biggerNumber[i];
@@ -59,7 +56,6 @@ let biggerNumber = (biggerNumber) => {
 
 let smallNumber = (smallNumber) => {
     let pElement = document.createElement('p');
-    let getDivRes = document.getElementById('res');
 
     for (let i = 0; i <= smallNumber.length; i++) {
         let verifSmall = smallNumber[i];
@@ -78,10 +74,9 @@ let smallNumber = (smallNumber) => {
 
 let sumOfNumbers = (sumOfNumbers) => {
     let pElement = document.createElement('p');
-    let getDivRes = document.getElementById('res');
 
     for (let i = 0, resultSum = 0; i < sumOfNumbers.length; i++) {
-        resultSum = sumOfNumbers[i] + resultSum;
+        resultSum += sumOfNumbers[i];
         pElement.innerHTML = `A soma de todos os números informados é: ${resultSum}.`;
         getDivRes.appendChild(pElement);
     }
@@ -89,7 +84,6 @@ let sumOfNumbers = (sumOfNumbers) => {
 
 let average = (average) => {
     let pElement = document.createElement('p');
-    let getDivRes = document.getElementById('res');
     let sumAverage = 0;
 
     for (let i in average) {
@@ -106,6 +100,8 @@ function displayResults() {
     if (document.getElementById('displayNumbers').childElementCount == 0) {
         alert('[ERRO] POR FAVOR, INSIRA ALGUM VALOR ANTES DE FINALIZAR. [ERRO]')
     } else {
+        getDivRes.innerHTML = '';
+        
         registeredNumbers(arrayNumber);
         biggerNumber(arrayNumber);
         smallNumber(arrayNumber);
